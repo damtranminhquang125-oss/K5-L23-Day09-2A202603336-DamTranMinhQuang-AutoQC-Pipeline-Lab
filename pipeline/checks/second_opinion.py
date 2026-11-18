@@ -40,5 +40,106 @@ from ..model_cache import get_preds  # noqa: F401
 
 
 def run(ds, cfg, preds=None):
-    # TODO
-    raise NotImplementedError("check second_opinion chưa làm")
+    if preds is None:
+        preds = get_preds(ds, cfg, "checker")
+
+    sop = cfg["second_opinion"]
+    conf_min = sop["conf"]
+    min_area_px = sop["min_area_px"]
+    fp_conf = sop["fp_conf"]
+    iou_missing = sop["iou_missing"]
+    iou_match = sop["iou_match"]
+    iou_loose = sop["iou_loose"]
+    issues = []
+
+    for image_path in ds.image_files():
+        stem = image_path.stem
+        if stem not in preds or not ds.label_path(stem).exists():
+            continue
+
+        size = ds.image_size(stem)
+        if size is None:
+            continue
+        width_px, height_px = size
+
+        labels = []
+        for line_no, text in ds.read_label_lines(stem) or []:
+            try:
+                box = parse_yolo_line(text)
+            except (ValueError, OverflowError):
+                continue
+            class_id = box[0]
+            if 0 <= class_id < len(ds.classes):
+                labels.append((line_no, box))
+
+        p_filtered = []
+        p_fp = []
+        for prediction in preds.get(stem, []):
+            if len(prediction) != 6:
+                continue
+            class_id, conf, cx, cy, w, h = prediction
+            pred_box = (cx, cy, w, h)
+            if conf >= fp_conf:
+                p_fp.append((class_id, conf, pred_box))
+            if conf >= conf_min:
+                area_px = w * width_px * h * height_px
+                if area_px >= min_area_px:
+                    p_filtered.append((class_id, conf, pred_box))
+
+        for pred_class, conf, pred_box in p_filtered:
+            cands = []
+            for _, label in labels:
+                iou = iou_xywh(pred_box, label[1:])
+                if iou >= iou_missing:
+                    cands.append((label[0], iou))
+
+            if not cands:
+                issues.append(Issue(
+                    "second_opinion", WARN, "POSSIBLE_MISSING", stem,
+                    "model lớn không tìm thấy nhãn trùng vật",
+                    extra={"conf": conf},
+                ))
+                continue
+
+            same = []
+            other = []
+            for _, label in labels:
+                iou = iou_xywh(pred_box, label[1:])
+                if iou >= iou_missing:
+                    if label[0] == pred_class:
+                        same.append(iou)
+                    else:
+                        other.append(iou)
+
+            if same:
+                best_same = max(same)
+                if best_same < iou_loose:
+                    issues.append(Issue(
+                        "second_opinion", WARN, "POSSIBLE_LOOSE_BOX", stem,
+                        "đúng vật nhưng box nhãn lệch so với dự đoán",
+                        extra={"conf": conf, "iou": best_same},
+                    ))
+                continue
+
+            if other:
+                best_other = max(other)
+                if best_other >= iou_match:
+                    issues.append(Issue(
+                        "second_opinion", WARN, "POSSIBLE_WRONG_CLASS", stem,
+                        "box trùng vật nhưng lớp nhãn có thể sai",
+                        extra={"conf": conf, "iou": best_other},
+                    ))
+
+        for line_no, label in labels:
+            max_iou = 0.0
+            for _, _, pred_box in p_fp:
+                max_iou = max(max_iou, iou_xywh(label[1:], pred_box))
+            if max_iou < iou_missing:
+                issues.append(Issue(
+                    "second_opinion", WARN, "POSSIBLE_FALSE_POS", stem,
+                    "nhãn không khớp dự đoán nào của model",
+                    line=line_no,
+                    extra={"iou": max_iou},
+                ))
+
+    return issues

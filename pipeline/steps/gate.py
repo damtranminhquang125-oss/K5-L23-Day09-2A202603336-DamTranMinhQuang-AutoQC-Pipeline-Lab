@@ -20,5 +20,44 @@ from ..common import ERROR, WARN  # noqa: F401
 
 
 def decide(issues, image_stems, cfg, reviewed=frozenset()):
-    # TODO
-    raise NotImplementedError("gate chưa làm")
+    stems = set(image_stems)
+    n_images = len(stems)
+
+    n_errors = sum(1 for issue in issues if issue.severity == ERROR)
+    warn_images = {
+        issue.image
+        for issue in issues
+        if issue.severity == WARN
+        and issue.image in stems
+        and issue.image not in reviewed
+    }
+    n_warn_images = len(warn_images)
+    warn_ratio = round(n_warn_images / n_images, 4) if n_images else 0.0
+
+    if n_errors:
+        decision = "Rework"
+        reasons = [f"Còn {n_errors} lỗi bắt buộc (severity ERROR), pipeline bị chặn."]
+    else:
+        hold_ratio = cfg["gate"]["warn_ratio_hold"]
+        if warn_ratio >= hold_ratio:
+            decision = "Hold"
+            reasons = [
+                f"Còn {n_warn_images}/{n_images} ảnh cảnh báo "
+                f"({warn_ratio:.4f} >= {hold_ratio:.4f}), cần người duyệt."
+            ]
+        else:
+            decision = "Release"
+            reasons = [
+                f"Không còn lỗi bắt buộc; cảnh báo chưa duyệt "
+                f"{n_warn_images}/{n_images} ({warn_ratio:.4f}) dưới ngưỡng Hold "
+                f"{hold_ratio:.4f}."
+            ]
+
+    return {
+        "decision": decision,
+        "n_errors": n_errors,
+        "n_warn_images": n_warn_images,
+        "n_images": n_images,
+        "warn_ratio": warn_ratio,
+        "reasons": reasons,
+    }
