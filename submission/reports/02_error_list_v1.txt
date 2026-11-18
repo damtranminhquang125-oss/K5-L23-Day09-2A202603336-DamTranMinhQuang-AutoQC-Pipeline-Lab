@@ -1,12 +1,12 @@
 # Danh sách lỗi — TRƯỚC khi sửa (v1)
-ảnh đã quét: 205
+ảnh đã quét: 193
 
 class_names -> 2 dòng
-duplicates -> 14 dòng
+duplicates -> 26 dòng
 images -> 5 dòng
 label_format -> 37 dòng
-missing_labels -> 18 dòng
-second_opinion -> 248 dòng
+missing_labels -> 17 dòng
+second_opinion -> 361 dòng
 stats -> 4 dòng
 
 [ERROR] BAD_CLASS_ID         img_0020.txt:3  id lớp 93 nằm ngoài 0..3
@@ -52,9 +52,21 @@ stats -> 4 dòng
 [ERROR] DUP_IMAGE_EXACT      img_0203  trùng từng byte với img_0145
 [ERROR] DUP_IMAGE_EXACT      img_0207  trùng từng byte với img_0182
 [ERROR] DUP_IMAGE_EXACT      img_0222  trùng từng byte với img_0151
+[ERROR] DUP_IMAGE_NEAR       img_0011  trùng gần đúng với img_0008 (phash 16)
 [ERROR] DUP_IMAGE_NEAR       img_0076  trùng gần đúng với img_0042 (phash 0)
+[ERROR] DUP_IMAGE_NEAR       img_0084  trùng gần đúng với img_0074 (phash 16)
 [ERROR] DUP_IMAGE_NEAR       img_0143  trùng gần đúng với img_0037 (phash 0)
+[ERROR] DUP_IMAGE_NEAR       img_0177  trùng gần đúng với img_0113 (phash 16)
+[ERROR] DUP_IMAGE_NEAR       img_0186  trùng gần đúng với img_0061 (phash 10)
+[ERROR] DUP_IMAGE_NEAR       img_0223  trùng gần đúng với img_0077 (phash 6)
+[ERROR] LEAK_TEST            img_0013  trùng ảnh kho test/val: test/test_087.jpg
+[ERROR] LEAK_TEST            img_0017  trùng ảnh kho test/val: test/test_071.jpg
+[ERROR] LEAK_TEST            img_0021  trùng ảnh kho test/val: test/test_048.jpg
+[ERROR] LEAK_TEST            img_0033  trùng ảnh kho test/val: test/test_070.jpg
+[ERROR] LEAK_TEST            img_0038  trùng ảnh kho test/val: test/test_002.jpg
 [ERROR] LEAK_TEST            img_0049  trùng ảnh kho test/val: test/test_033.jpg
+[ERROR] LEAK_TEST            img_0101  trùng ảnh kho test/val: test/test_039.jpg
+[ERROR] LEAK_TEST            img_0115  trùng ảnh kho test/val: test/test_088.jpg
 [ERROR] LEAK_TEST            img_0167  trùng ảnh kho test/val: test/test_044.jpg
 [ERROR] LEAK_TEST            img_0174  trùng ảnh kho test/val: test/test_085.jpg
 [ERROR] LEAK_TEST            img_0221  trùng ảnh kho test/val: test/test_009.jpg
@@ -78,7 +90,6 @@ stats -> 4 dòng
 [WARN ] CLASS_RARE           <dataset>  lớp 7 chỉ có 1 box
 [WARN ] CLASS_RARE           <dataset>  lớp 93 chỉ có 1 box
 [WARN ] EMPTY_LABEL          img_0004  file nhãn rỗng: ảnh nền hay thiếu nhãn?
-[WARN ] EMPTY_LABEL          img_0013  file nhãn rỗng: ảnh nền hay thiếu nhãn?
 [WARN ] EMPTY_LABEL          img_0057  file nhãn rỗng: ảnh nền hay thiếu nhãn?
 [WARN ] EMPTY_LABEL          img_0065  file nhãn rỗng: ảnh nền hay thiếu nhãn?
 [WARN ] EMPTY_LABEL          img_0097  file nhãn rỗng: ảnh nền hay thiếu nhãn?
@@ -111,7 +122,6 @@ stats -> 4 dòng
 [WARN ] POSSIBLE_FALSE_POS   img_0150.txt:3  nhãn không khớp dự đoán nào của model
 [WARN ] POSSIBLE_FALSE_POS   img_0155.txt:2  nhãn không khớp dự đoán nào của model
 [WARN ] POSSIBLE_FALSE_POS   img_0155.txt:3  nhãn không khớp dự đoán nào của model
-[WARN ] POSSIBLE_FALSE_POS   img_0177.txt:2  nhãn không khớp dự đoán nào của model
 [WARN ] POSSIBLE_FALSE_POS   img_0180.txt:5  nhãn không khớp dự đoán nào của model
 [WARN ] POSSIBLE_FALSE_POS   img_0185.txt:10  nhãn không khớp dự đoán nào của model
 [WARN ] POSSIBLE_FALSE_POS   img_0189.txt:4  nhãn không khớp dự đoán nào của model
@@ -124,7 +134,6 @@ stats -> 4 dòng
 [WARN ] POSSIBLE_LOOSE_BOX   img_0023  đúng vật nhưng box nhãn lệch so với dự đoán
 [WARN ] POSSIBLE_LOOSE_BOX   img_0030  đúng vật nhưng box nhãn lệch so với dự đoán
 [WARN ] POSSIBLE_LOOSE_BOX   img_0036  đúng vật nhưng box nhãn lệch so với dự đoán
-[WARN ] POSSIBLE_LOOSE_BOX   img_0038  đúng vật nhưng box nhãn lệch so với dự đoán
 [WARN ] POSSIBLE_LOOSE_BOX   img_0045  đúng vật nhưng box nhãn lệch so với dự đoán
 [WARN ] POSSIBLE_LOOSE_BOX   img_0045  đúng vật nhưng box nhãn lệch so với dự đoán
 [WARN ] POSSIBLE_LOOSE_BOX   img_0046  đúng vật nhưng box nhãn lệch so với dự đoán
@@ -137,60 +146,79 @@ stats -> 4 dòng
 [WARN ] POSSIBLE_LOOSE_BOX   img_0064  đúng vật nhưng box nhãn lệch so với dự đoán
 [WARN ] POSSIBLE_LOOSE_BOX   img_0068  đúng vật nhưng box nhãn lệch so với dự đoán
 [WARN ] POSSIBLE_LOOSE_BOX   img_0069  đúng vật nhưng box nhãn lệch so với dự đoán
+[WARN ] POSSIBLE_LOOSE_BOX   img_0074  đúng vật nhưng box nhãn lệch so với dự đoán
 [WARN ] POSSIBLE_LOOSE_BOX   img_0075  đúng vật nhưng box nhãn lệch so với dự đoán
 [WARN ] POSSIBLE_LOOSE_BOX   img_0077  đúng vật nhưng box nhãn lệch so với dự đoán
 [WARN ] POSSIBLE_LOOSE_BOX   img_0081  đúng vật nhưng box nhãn lệch so với dự đoán
 [WARN ] POSSIBLE_LOOSE_BOX   img_0082  đúng vật nhưng box nhãn lệch so với dự đoán
 [WARN ] POSSIBLE_LOOSE_BOX   img_0090  đúng vật nhưng box nhãn lệch so với dự đoán
 [WARN ] POSSIBLE_LOOSE_BOX   img_0091  đúng vật nhưng box nhãn lệch so với dự đoán
+[WARN ] POSSIBLE_LOOSE_BOX   img_0092  đúng vật nhưng box nhãn lệch so với dự đoán
+[WARN ] POSSIBLE_LOOSE_BOX   img_0094  đúng vật nhưng box nhãn lệch so với dự đoán
+[WARN ] POSSIBLE_LOOSE_BOX   img_0094  đúng vật nhưng box nhãn lệch so với dự đoán
 [WARN ] POSSIBLE_LOOSE_BOX   img_0094  đúng vật nhưng box nhãn lệch so với dự đoán
 [WARN ] POSSIBLE_LOOSE_BOX   img_0094  đúng vật nhưng box nhãn lệch so với dự đoán
 [WARN ] POSSIBLE_LOOSE_BOX   img_0096  đúng vật nhưng box nhãn lệch so với dự đoán
+[WARN ] POSSIBLE_LOOSE_BOX   img_0105  đúng vật nhưng box nhãn lệch so với dự đoán
+[WARN ] POSSIBLE_LOOSE_BOX   img_0116  đúng vật nhưng box nhãn lệch so với dự đoán
 [WARN ] POSSIBLE_LOOSE_BOX   img_0119  đúng vật nhưng box nhãn lệch so với dự đoán
 [WARN ] POSSIBLE_LOOSE_BOX   img_0125  đúng vật nhưng box nhãn lệch so với dự đoán
 [WARN ] POSSIBLE_LOOSE_BOX   img_0127  đúng vật nhưng box nhãn lệch so với dự đoán
 [WARN ] POSSIBLE_LOOSE_BOX   img_0127  đúng vật nhưng box nhãn lệch so với dự đoán
+[WARN ] POSSIBLE_LOOSE_BOX   img_0127  đúng vật nhưng box nhãn lệch so với dự đoán
+[WARN ] POSSIBLE_LOOSE_BOX   img_0127  đúng vật nhưng box nhãn lệch so với dự đoán
 [WARN ] POSSIBLE_LOOSE_BOX   img_0131  đúng vật nhưng box nhãn lệch so với dự đoán
 [WARN ] POSSIBLE_LOOSE_BOX   img_0142  đúng vật nhưng box nhãn lệch so với dự đoán
+[WARN ] POSSIBLE_LOOSE_BOX   img_0155  đúng vật nhưng box nhãn lệch so với dự đoán
+[WARN ] POSSIBLE_LOOSE_BOX   img_0169  đúng vật nhưng box nhãn lệch so với dự đoán
 [WARN ] POSSIBLE_LOOSE_BOX   img_0171  đúng vật nhưng box nhãn lệch so với dự đoán
 [WARN ] POSSIBLE_LOOSE_BOX   img_0171  đúng vật nhưng box nhãn lệch so với dự đoán
+[WARN ] POSSIBLE_LOOSE_BOX   img_0175  đúng vật nhưng box nhãn lệch so với dự đoán
 [WARN ] POSSIBLE_LOOSE_BOX   img_0175  đúng vật nhưng box nhãn lệch so với dự đoán
 [WARN ] POSSIBLE_LOOSE_BOX   img_0175  đúng vật nhưng box nhãn lệch so với dự đoán
 [WARN ] POSSIBLE_LOOSE_BOX   img_0179  đúng vật nhưng box nhãn lệch so với dự đoán
+[WARN ] POSSIBLE_LOOSE_BOX   img_0182  đúng vật nhưng box nhãn lệch so với dự đoán
+[WARN ] POSSIBLE_LOOSE_BOX   img_0185  đúng vật nhưng box nhãn lệch so với dự đoán
 [WARN ] POSSIBLE_LOOSE_BOX   img_0188  đúng vật nhưng box nhãn lệch so với dự đoán
 [WARN ] POSSIBLE_LOOSE_BOX   img_0200  đúng vật nhưng box nhãn lệch so với dự đoán
 [WARN ] POSSIBLE_LOOSE_BOX   img_0210  đúng vật nhưng box nhãn lệch so với dự đoán
 [WARN ] POSSIBLE_LOOSE_BOX   img_0217  đúng vật nhưng box nhãn lệch so với dự đoán
 [WARN ] POSSIBLE_LOOSE_BOX   img_0217  đúng vật nhưng box nhãn lệch so với dự đoán
-[WARN ] POSSIBLE_LOOSE_BOX   img_0223  đúng vật nhưng box nhãn lệch so với dự đoán
 [WARN ] POSSIBLE_MISSING     img_0001  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0001  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0004  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0004  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0005  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0005  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0012  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0014  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0014  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0014  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0019  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0020  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0020  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0020  model lớn không tìm thấy nhãn trùng vật
-[WARN ] POSSIBLE_MISSING     img_0021  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0022  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0024  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0024  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0027  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0028  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0029  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0030  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0030  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0032  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0032  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0032  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0032  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0036  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0037  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0045  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0047  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0047  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0050  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0051  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0057  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0058  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0058  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0058  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0058  model lớn không tìm thấy nhãn trùng vật
@@ -204,30 +232,48 @@ stats -> 4 dòng
 [WARN ] POSSIBLE_MISSING     img_0067  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0067  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0067  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0067  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0068  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0068  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0068  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0073  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0074  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0074  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0074  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0074  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0074  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0075  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0078  model lớn không tìm thấy nhãn trùng vật
-[WARN ] POSSIBLE_MISSING     img_0084  model lớn không tìm thấy nhãn trùng vật
-[WARN ] POSSIBLE_MISSING     img_0084  model lớn không tìm thấy nhãn trùng vật
-[WARN ] POSSIBLE_MISSING     img_0084  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0086  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0087  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0091  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0091  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0091  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0092  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0093  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0094  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0095  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0096  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0097  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0099  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0099  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0099  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0099  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0099  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0099  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0100  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0100  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0100  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0100  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0103  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0104  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0105  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0106  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0106  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0108  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0108  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0114  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0114  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0114  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0114  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0116  model lớn không tìm thấy nhãn trùng vật
@@ -239,8 +285,20 @@ stats -> 4 dòng
 [WARN ] POSSIBLE_MISSING     img_0121  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0124  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0124  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0124  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0124  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0124  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0125  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0125  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0125  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0127  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0127  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0127  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0127  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0127  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0127  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0127  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0127  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0127  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0127  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0127  model lớn không tìm thấy nhãn trùng vật
@@ -249,11 +307,24 @@ stats -> 4 dòng
 [WARN ] POSSIBLE_MISSING     img_0127  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0131  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0131  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0131  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0131  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0131  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0131  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0131  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0131  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0131  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0131  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0131  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0133  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0133  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0133  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0134  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0134  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0134  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0137  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0138  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0138  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0138  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0142  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0144  model lớn không tìm thấy nhãn trùng vật
@@ -263,8 +334,44 @@ stats -> 4 dòng
 [WARN ] POSSIBLE_MISSING     img_0151  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0151  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0151  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0151  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0151  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0151  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0155  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0157  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0159  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0160  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0160  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0160  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0160  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0160  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0160  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0160  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0160  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0160  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0160  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0160  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0160  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0160  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0160  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0160  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0160  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0160  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0160  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0160  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0160  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0160  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0160  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0160  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0160  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0160  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0160  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0160  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0160  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0160  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0160  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0160  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0160  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0160  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0160  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0160  model lớn không tìm thấy nhãn trùng vật
@@ -280,28 +387,45 @@ stats -> 4 dòng
 [WARN ] POSSIBLE_MISSING     img_0164  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0165  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0165  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0165  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0165  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0169  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0169  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0178  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0182  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0184  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0185  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0187  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0187  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0187  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0188  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0188  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0191  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0192  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0192  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0192  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0194  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0195  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0195  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0195  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0195  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0195  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0196  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0199  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0199  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0199  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0200  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0204  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0205  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0205  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0205  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0205  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0208  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0210  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0210  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0210  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0211  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0211  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0211  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0211  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0215  model lớn không tìm thấy nhãn trùng vật
@@ -315,9 +439,10 @@ stats -> 4 dòng
 [WARN ] POSSIBLE_MISSING     img_0224  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0224  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_MISSING     img_0224  model lớn không tìm thấy nhãn trùng vật
+[WARN ] POSSIBLE_MISSING     img_0224  model lớn không tìm thấy nhãn trùng vật
 [WARN ] POSSIBLE_WRONG_CLASS img_0019  box trùng vật nhưng lớp nhãn có thể sai
 [WARN ] POSSIBLE_WRONG_CLASS img_0020  box trùng vật nhưng lớp nhãn có thể sai
-[WARN ] POSSIBLE_WRONG_CLASS img_0021  box trùng vật nhưng lớp nhãn có thể sai
+[WARN ] POSSIBLE_WRONG_CLASS img_0024  box trùng vật nhưng lớp nhãn có thể sai
 [WARN ] POSSIBLE_WRONG_CLASS img_0034  box trùng vật nhưng lớp nhãn có thể sai
 [WARN ] POSSIBLE_WRONG_CLASS img_0037  box trùng vật nhưng lớp nhãn có thể sai
 [WARN ] POSSIBLE_WRONG_CLASS img_0070  box trùng vật nhưng lớp nhãn có thể sai
@@ -325,7 +450,6 @@ stats -> 4 dòng
 [WARN ] POSSIBLE_WRONG_CLASS img_0075  box trùng vật nhưng lớp nhãn có thể sai
 [WARN ] POSSIBLE_WRONG_CLASS img_0083  box trùng vật nhưng lớp nhãn có thể sai
 [WARN ] POSSIBLE_WRONG_CLASS img_0092  box trùng vật nhưng lớp nhãn có thể sai
-[WARN ] POSSIBLE_WRONG_CLASS img_0101  box trùng vật nhưng lớp nhãn có thể sai
 [WARN ] POSSIBLE_WRONG_CLASS img_0112  box trùng vật nhưng lớp nhãn có thể sai
 [WARN ] POSSIBLE_WRONG_CLASS img_0124  box trùng vật nhưng lớp nhãn có thể sai
 [WARN ] POSSIBLE_WRONG_CLASS img_0124  box trùng vật nhưng lớp nhãn có thể sai
@@ -348,14 +472,14 @@ error BOX_ZERO               4
 error CORRUPT_IMAGE          2
 error DUP_BOX                7
 error DUP_IMAGE_EXACT        8
-error DUP_IMAGE_NEAR         2
-error LEAK_TEST              4
+error DUP_IMAGE_NEAR         7
+error LEAK_TEST              11
 error MISSING_LABEL_FILE     6
 warn  BOX_HUGE               3
 warn  BOX_TINY               6
 warn  CLASS_RARE             4
-warn  EMPTY_LABEL            12
-warn  POSSIBLE_FALSE_POS     29
-warn  POSSIBLE_LOOSE_BOX     45
-warn  POSSIBLE_MISSING       152
-warn  POSSIBLE_WRONG_CLASS   22
+warn  EMPTY_LABEL            11
+warn  POSSIBLE_FALSE_POS     28
+warn  POSSIBLE_LOOSE_BOX     56
+warn  POSSIBLE_MISSING       256
+warn  POSSIBLE_WRONG_CLASS   21

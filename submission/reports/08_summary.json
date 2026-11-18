@@ -2,17 +2,17 @@
   "verdict": {
     "decision": "Hold",
     "n_errors": 0,
-    "n_warn_images": 60,
-    "n_images": 205,
-    "warn_ratio": 0.2927,
+    "n_warn_images": 57,
+    "n_images": 193,
+    "warn_ratio": 0.2953,
     "reasons": [
-      "Còn 60/205 ảnh cảnh báo (0.2927 >= 0.1000), cần người duyệt."
+      "Còn 57/193 ảnh cảnh báo (0.2953 >= 0.1000), cần người duyệt."
     ]
   },
   "reviewed": 80,
   "budget": 80,
-  "seconds": 8.4,
+  "seconds": 6.4,
   "exported": "C:\\Users\\ThinkPad1\\Downloads\\VinAI\\K5-L23-Day09-2A202603336-DamTranMinhQuang-AutoQC-Pipeline-Lab\\submission\\export\\clean_v1",
-  "config_sha1": "b44ba77a8a036c1cad78e0c28ed1db6ba7404125",
+  "config_sha1": "5b0d9b293109fc1db8ffab44f74e6b3672a1ed18",
   "review_sim_sha1": "7988ca22827f780a7043a2300490e679a1697154"
 }
